@@ -9,7 +9,23 @@
 <body>
   <script src="/xuni/bundle.js"></script>
   <script>
-    var templateStr = '我买了一个{{thing}}, 我好{{state}}'
+    var templateStr = `
+    <div>
+      <ol>
+        {{#student}}
+        <li>
+          学生{{item.name}}的爱好是
+          <ol>
+            {{#item.hobbies}}
+            <li>{{.}}</li>
+            {{/item.hobbies}}  
+          </ol>  
+        </li>
+        {{/student}}  
+      </ol>  
+    </div>
+    
+    `
     var data = {
       thing: "华为手机",
       state: "开心"

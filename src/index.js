@@ -1,15 +1,11 @@
-import Scanner from "./Scanner.js"
+import parseTemplateToTokens from "./parseTemplateToTokens.js"
 
 window.MyMustache = {
   render(templateStr, data) {
+    // 将模板字符串转化为tokens
+    const tokens = parseTemplateToTokens(templateStr)
+    
 
-
-    // 实例化扫描器  为模板字符串工作的
-    var scanner = new Scanner(templateStr)
-
-    scanner.scanUtil("{{")
-    // console.log(templateStr);
-    var result = scanner.scanUtil("{{")
-    console.log(result);
+    console.log("tokens", tokens);
   }
 }
