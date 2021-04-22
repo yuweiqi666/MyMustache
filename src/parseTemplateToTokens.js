@@ -8,8 +8,10 @@ export default function parseTemplateToTokens(templateStr) {
 
   var tokens = []
 
+  var result 
+
   while(!scanner.eos()) {
-    var result = scanner.scanUtil("{{")
+    result = scanner.scanUtil("{{")
   
     /**
      * 判一层空主要是因为 当tokens以text数组结尾时 使用scanner.scanUtil("}}") 时
@@ -17,13 +19,8 @@ export default function parseTemplateToTokens(templateStr) {
      * （pos_backup === pos 因为已经eos 不会执行循环 pos++了）  返回空字符串      例如："abc".substring(1, 1) 返回 ""
      */
     if(result.length) {
-      if(result[0] === "#") {
-        tokens.push(["#", result.substr(1)])
-      } else if(result[0] === "/") {
-        tokens.push(["/", result.substr(1)])
-      } else {
-        tokens.push(["text", result])
-      }
+      tokens.push(["text", result])
+      
     }
     
     scanner.scan("{{")
