@@ -2,6 +2,13 @@ import Scanner from "./Scanner.js"
 
 import nestTokens from "./nestTokens.js"
 
+/**
+ * parseTemplateToTokens函数用于折叠tokens（嵌套结构）
+ * 
+ * @param {*} templateStr 模板字符串 
+ * @returns   折叠好的模板字符串 
+ */
+
 export default function parseTemplateToTokens(templateStr) {
   // 实例化扫描器  为模板字符串工作的
   var scanner = new Scanner(templateStr)

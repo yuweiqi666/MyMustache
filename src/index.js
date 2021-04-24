@@ -10,11 +10,10 @@ window.MyMustache = {
     // 调用renderTemplate函数，让tokens数组变为dom字符串
     const domStr = renderTemplate(tokens, data)
 
-    console.log("tokens", tokens);
 
     console.log("domStr", domStr);
 
     return domStr
-    
+
   }
 }

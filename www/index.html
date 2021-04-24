@@ -7,40 +7,50 @@
   <title>Document</title>
 </head>
 <body>
+  <div class="app"></div>
   <script src="/xuni/bundle.js"></script>
   <script>
-    // var templateStr = `
-    // <div>
-    //   <ol>
-    //     {{#student}}
-    //     <li>
-    //       学生{{item.name}}的爱好是
-    //       <ol>
-    //         {{#item.hobbies}}
-    //         <li>{{.}}</li>
-    //         {{/item.hobbies}}  
-    //       </ol>  
-    //     </li>
-    //     {{/student}}  
-    //   </ol>  
-    // </div>
+    var templateStr = `
+    <div>
+      <ul>
+        {{#student}}
+          <li>
+            <p>姓名：{{name}}</p>
+            {{#hobbies}}
+              <p>{{.}}</p>
+            {{/hobbies}}
+            {{}}  
+          </li>
+        {{/student}}  
+      </ul> 
+    </div>
     
-    // `
-    // var data = {
-    //   student: [
-    //     { "name": "小明", "hobbies": ["游泳", "健身"] },
-    //     { "name": "小红", "hobbies": ["足球", "篮球", "羽毛球"] },
-    //     { "name": "小强", "hobbies": ["吃饭", "睡觉"] }
-    //   ]
-    // }
-
-    var templateStr = "我爱{{username}}"
-
+    `
     var data = {
-      username: "我爱"
+      student: [
+        { "name": "小明", "hobbies": ["游泳", "健身"] },
+        { "name": "小红", "hobbies": ["足球", "篮球", "羽毛球"] },
+        { "name": "小强", "hobbies": ["吃饭", "睡觉"] }
+      ]
     }
+
+    // var templateStr = "我爱{{username.a.b.c}}"
+
+    // var data = {
+    //   username: {
+    //     a: {
+    //       b: {
+    //         c: 1
+    //       }
+    //     }
+    //   }
+    // }
     // 调用render函数 
-    MyMustache.render(templateStr, data)
+    const domStr = MyMustache.render(templateStr, data)
+
+    const app = document.querySelector(".app")
+
+    app.innerHTML = domStr
   </script>
 </body>
 </html>
